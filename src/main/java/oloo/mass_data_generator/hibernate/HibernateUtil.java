@@ -1,4 +1,4 @@
-package com.example.hibernate;
+package oloo.mass_data_generator.hibernate;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

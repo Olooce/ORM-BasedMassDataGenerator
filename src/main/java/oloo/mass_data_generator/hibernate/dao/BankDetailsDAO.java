@@ -1,12 +1,12 @@
-// BankDetailsDAO.java
-package com.example.hibernate.dao;
+package oloo.mass_data_generator.hibernate.dao;
 
-import com.example.hibernate.entity.BankDetails;
+import oloo.mass_data_generator.hibernate.entity.BankDetails;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import com.example.hibernate.HibernateUtil;
+import oloo.mass_data_generator.hibernate.HibernateUtil;
 
 public class BankDetailsDAO {
+
     public void save(BankDetails bankDetails) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -20,5 +20,4 @@ public class BankDetailsDAO {
             e.printStackTrace();
         }
     }
-
 }

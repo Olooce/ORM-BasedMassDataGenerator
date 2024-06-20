@@ -1,9 +1,9 @@
 package oloo.mass_data_generator.hibernate.dao;
 
-import com.example.hibernate.entity.Salary;
+import oloo.mass_data_generator.hibernate.entity.Salary;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import com.example.hibernate.HibernateUtil;
+import oloo.mass_data_generator.hibernate.HibernateUtil;
 
 public class SalaryDAO {
     public void save(Salary salary) {

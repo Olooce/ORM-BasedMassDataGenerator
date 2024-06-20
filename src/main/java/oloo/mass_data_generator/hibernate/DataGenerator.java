@@ -1,10 +1,9 @@
-package com.example.hibernate;
+package oloo.mass_data_generator.hibernate;
 
 import com.github.javafaker.Faker;
-import com.example.hibernate.dao.*;
-import com.example.hibernate.entity.*;
+import oloo.mass_data_generator.hibernate.entity.*;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.concurrent.TimeUnit;
 
 public class DataGenerator {
@@ -16,8 +15,8 @@ public class DataGenerator {
         employee.setDob(faker.date().birthday());
         employee.setGender(faker.demographic().sex());
         employee.setDepartmentId(faker.number().numberBetween(1L, 10L));
-        employee.setEmploymentType(faker.company().profession());
-        employee.setEmploymentDate(faker.date().past(3650, TimeUnit.DAYS));
+        employee.setEmploymentType(faker.options().option("FULL-TIME", "PART-TIME","CONTRACT","TEMPORARY"));
+        employee.setEmploymentDate(faker.date().past(365, TimeUnit.DAYS));
         return employee;
     }
 
@@ -30,11 +29,11 @@ public class DataGenerator {
         return contactInfo;
     }
 
-    public static Salary generateSalary(Long employeeId) {
+    public static Salary generateSalary(Long employeeId, Date month) {
         Salary salary = new Salary();
         salary.setEmployeeId(employeeId);
-        salary.setAmount(faker.number().randomDouble(2, 30000, 150000));
-        salary.setPayPeriod("Monthly");
+        salary.setBasicSalary(faker.number().randomDouble(2, 30000, 150000));
+        salary.setMonth(month);
         return salary;
     }
 
@@ -65,9 +64,9 @@ public class DataGenerator {
     public static BankDetails generateBankDetails(Long employeeId) {
         BankDetails bankDetails = new BankDetails();
         bankDetails.setEmployeeId(employeeId);
-        bankDetails.setBankName(faker.bank().name());
+        bankDetails.setBankName(faker.company().name());
         bankDetails.setAccountNumber(faker.finance().iban());
-        bankDetails.setIfscCode(faker.finance().bic());
+        bankDetails.setBranchCode(faker.finance().bic());
         return bankDetails;
     }
 }

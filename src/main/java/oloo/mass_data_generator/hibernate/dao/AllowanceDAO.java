@@ -1,10 +1,10 @@
-// AllowanceDAO.java
-package com.example.hibernate.dao;
 
-import com.example.hibernate.entity.Allowance;
+package oloo.mass_data_generator.hibernate.dao;
+
+import oloo.mass_data_generator.hibernate.entity.Allowance;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import com.example.hibernate.HibernateUtil;
+import oloo.mass_data_generator.hibernate.HibernateUtil;
 
 public class AllowanceDAO {
     public void save(Allowance allowance) {

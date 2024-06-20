@@ -1,7 +1,7 @@
-package com.example.hibernate;
+package oloo.mass_data_generator.hibernate;
 
-import com.example.hibernate.dao.*;
-import com.example.hibernate.entity.*;
+import oloo.mass_data_generator.hibernate.dao.*;
+import oloo.mass_data_generator.hibernate.entity.*;
 
 public class Main {
     public static void main(String[] args) {

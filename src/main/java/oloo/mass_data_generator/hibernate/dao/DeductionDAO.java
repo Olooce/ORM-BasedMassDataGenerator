@@ -1,12 +1,9 @@
+package oloo.mass_data_generator.hibernate.dao;
 
-
-// DeductionDAO.java
-package com.example.hibernate.dao;
-
-import com.example.hibernate.entity.Deduction;
+import oloo.mass_data_generator.hibernate.entity.Deduction;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import com.example.hibernate.HibernateUtil;
+import oloo.mass_data_generator.hibernate.HibernateUtil;
 
 public class DeductionDAO {
     public void save(Deduction deduction) {
