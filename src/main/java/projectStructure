@@ -1,0 +1,28 @@
+src/
+|-- main/
+    |-- java/
+        |-- oloo/
+            |-- mass_data_generator/
+                |-- hibernate/
+                    |-- Main.java
+                    |-- DataGenerator.java
+                    |-- HibernateU9til.java
+                    |-- dao/
+                        |-- EmployeeDAO.java
+                        |-- ContactInfoDAO.java
+                        |-- SalaryDAO.java
+                        |-- AllowanceDAO.java
+                        |-- DeductionDAO.java
+                        |-- TaxDAO.java
+                        |-- BankDetailsDAO.java
+                    |-- entity/
+                        |-- Employee.java
+                        |-- ContactInfo.java
+                        |-- Salary.java
+                        |-- Allowance.java
+                        |-- Deduction.java
+                        |-- Tax.java
+                        |-- BankDetails.java
+    |-- resources/
+        |-- hibernate.cfg.xml
+pom.xml
