@@ -1,9 +1,10 @@
 package oloo.mass_data_generator.hibernate.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
-@Table(name = "deduction")
+@Table(name = "deductions")
 public class Deduction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,11 +13,17 @@ public class Deduction {
     @Column(name = "employee_id")
     private Long employeeId;
 
-    @Column(name = "amount")
-    private Double amount;
+    @Column(name="month")
+    private Date month;
 
-    @Column(name = "type")
-    private String type;
+    @Column(name="deduction_name")
+    private String deductionName;
+
+    @Column(name = "deduction_amount")
+    private Double deductionAmount;
+
+    @Column(name = "deduction_type")
+    private String deductionType;
 
     public Long getId() {
         return id;
@@ -34,19 +41,33 @@ public class Deduction {
         this.employeeId = employeeId;
     }
 
-    public Double getAmount() {
-        return amount;
+    public void setMonth(Date month) {
+        this.month = month;
+    }
+    public Date getMonth() {
+        return month;
     }
 
-    public void setAmount(Double amount) {
-        this.amount = amount;
+    public void setDeductionName(String deductionName) {
+        this.deductionName = deductionName;
+    }
+    public String getDeductionName() {
+        return deductionName;
     }
 
-    public String getType() {
-        return type;
+    public void setDeductionAmount(Double deductionAmount) {
+        this.deductionAmount = deductionAmount;
+    }
+    public Double getDeductionAmount() {
+        return deductionAmount;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setDeductionType(String deductionType) {
+        this.deductionType = deductionType;
     }
+    public String getDeductionType() {
+        return deductionType;
+    }
+
+
 }

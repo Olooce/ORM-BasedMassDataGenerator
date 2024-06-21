@@ -1,9 +1,10 @@
 package oloo.mass_data_generator.hibernate.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
-@Table(name = "tax")
+@Table(name = "taxes")
 public class Tax {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,11 +13,23 @@ public class Tax {
     @Column(name = "employee_id")
     private Long employeeId;
 
-    @Column(name = "amount")
-    private Double amount;
+    @Column(name = "month")
+    private Date month;
 
-    @Column(name = "type")
-    private String type;
+    @Column(name = "gross_salary")
+    private Double grossSalary;
+
+    @Column(name = "tax_name")
+    private String taxName;
+
+    @Column(name="tax_rate")
+    private Double taxRate;
+
+    @Column(name="tax_type")
+    private String taxType;
+
+    @Column(name="tax_amount")
+    private Double taxAmount;
 
     public Long getId() {
         return id;
@@ -34,19 +47,42 @@ public class Tax {
         this.employeeId = employeeId;
     }
 
-    public Double getAmount() {
-        return amount;
-    }
+   private void setMonth (Date month) {
+        this.month = month;
+   }
+   public Date getMonth() {
+        return month;
+   }
 
-    public void setAmount(Double amount) {
-        this.amount = amount;
-    }
+   private void setGrossSalary(Double grossSalary){
+        this.grossSalary = grossSalary;
+   }
+   private Double getGrossSalary(){
+        return grossSalary;
+   }
 
-    public String getType() {
-        return type;
-    }
+   private void setTaxName(String taxName) {
+        this.taxName = taxName;
+   }
+   public String getTaxName() {
+        return taxName;
+   }
 
-    public void setType(String type) {
-        this.type = type;
-    }
+   private void setTaxRate(Double taxRate) {
+        this.taxRate = taxRate;
+   }
+   private Double getTaxRate(){
+        return taxRate;
+   }
+
+   private void setTaxType(String taxType) {
+        this.taxType = taxType;
+   }
+   private String getTaxType(){
+        return taxType;
+   }
+
+   private void setTaxAmount(Double taxAmount) {
+        this.taxAmount = taxAmount;
+   }
 }
