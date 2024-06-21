@@ -1,9 +1,10 @@
 package oloo.mass_data_generator.hibernate.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
-@Table(name = "allowance")
+@Table(name = "allowances")
 public class Allowance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,11 +13,21 @@ public class Allowance {
     @Column(name = "employee_id")
     private Long employeeId;
 
-    @Column(name = "amount")
-    private Double amount;
+    @Column(name="month")
+    private Date month;
 
-    @Column(name = "type")
-    private String type;
+    @Column(name="allowance_name")
+    private String allowanceName;
+
+    @Column(name="allowance_rate")
+    private double allowanceRate;
+
+    @Column(name="allowance_type")
+    private String allowanceType;
+
+    @Column(name = "allowance_amount")
+    private Double allowanceAmount;
+
 
     public Long getId() {
         return id;
@@ -34,19 +45,40 @@ public class Allowance {
         this.employeeId = employeeId;
     }
 
-    public Double getAmount() {
-        return amount;
+    public Double getAllowanceAmount() {
+        return allowanceAmount;
     }
 
-    public void setAmount(Double amount) {
-        this.amount = amount;
+    public void setAllowanceAmount(Double allowanceAmount) {
+        this.allowanceAmount = allowanceAmount;
     }
 
-    public String getType() {
-        return type;
+    public String getAllowanceTypeType() {
+        return allowanceType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setAllowanceTypeType(String allowanceType) {
+        this.allowanceType = allowanceType;
+    }
+
+    public Date getMonth() {
+        return month;
+    }
+    public void setMonth(Date month) {
+        this.month = month;
+    }
+
+    public String getAllowanceName() {
+        return allowanceName;
+    }
+    public void setAllowanceName(String allowanceName) {
+        this.allowanceName = allowanceName;
+    }
+
+    public double getAllowanceRate() {
+        return allowanceRate;
+    }
+    public void setAllowanceRate(double allowanceRate) {
+        this.allowanceRate = allowanceRate;
     }
 }

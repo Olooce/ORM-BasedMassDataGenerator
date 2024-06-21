@@ -7,16 +7,26 @@ import oloo.mass_data_generator.hibernate.HibernateUtil;
 
 public class TaxDAO {
     public void save(Tax tax) {
+        performTransaction(session -> session.save(tax));
+    }
+
+    private void performTransaction(TransactionOperation operation) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.save(tax);
+            operation.execute(session);
             transaction.commit();
         } catch (Exception e) {
-            if (transaction != null) {
+            if (transaction != null && transaction.getStatus().canRollback()) {
                 transaction.rollback();
             }
             e.printStackTrace();
         }
     }
+
+    @FunctionalInterface
+    private interface TransactionOperation {
+        void execute(Session session);
+    }
 }
+

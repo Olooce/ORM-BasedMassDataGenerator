@@ -47,42 +47,42 @@ public class Tax {
         this.employeeId = employeeId;
     }
 
-   private void setMonth (Date month) {
+   public void setMonth(Date month) {
         this.month = month;
    }
    public Date getMonth() {
         return month;
    }
 
-   private void setGrossSalary(Double grossSalary){
+   public void setGrossSalary(Double grossSalary){
         this.grossSalary = grossSalary;
    }
    private Double getGrossSalary(){
         return grossSalary;
    }
 
-   private void setTaxName(String taxName) {
+   public void setTaxName(String taxName) {
         this.taxName = taxName;
    }
    public String getTaxName() {
         return taxName;
    }
 
-   private void setTaxRate(Double taxRate) {
+   public void setTaxRate(Double taxRate) {
         this.taxRate = taxRate;
    }
    private Double getTaxRate(){
         return taxRate;
    }
 
-   private void setTaxType(String taxType) {
+   public void setTaxType(String taxType) {
         this.taxType = taxType;
    }
    private String getTaxType(){
         return taxType;
    }
 
-   private void setTaxAmount(Double taxAmount) {
+   public void setTaxAmount(Double taxAmount) {
         this.taxAmount = taxAmount;
    }
 }

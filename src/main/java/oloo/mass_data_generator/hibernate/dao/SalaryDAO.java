@@ -1,5 +1,6 @@
 package oloo.mass_data_generator.hibernate.dao;
 
+import oloo.mass_data_generator.hibernate.entity.Allowance;
 import oloo.mass_data_generator.hibernate.entity.Salary;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -7,16 +8,26 @@ import oloo.mass_data_generator.hibernate.HibernateUtil;
 
 public class SalaryDAO {
     public void save(Salary salary) {
+        performTransaction(session -> session.save(salary));
+    }
+
+    private void performTransaction(TransactionOperation operation) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.save(salary);
+            operation.execute(session);
             transaction.commit();
         } catch (Exception e) {
-            if (transaction != null) {
+            if (transaction != null && transaction.getStatus().canRollback()) {
                 transaction.rollback();
             }
             e.printStackTrace();
         }
     }
+
+    @FunctionalInterface
+    private interface TransactionOperation {
+        void execute(Session session);
+    }
 }
+

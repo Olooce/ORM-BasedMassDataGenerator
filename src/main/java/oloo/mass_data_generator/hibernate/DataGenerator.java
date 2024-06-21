@@ -4,69 +4,82 @@ import com.github.javafaker.Faker;
 import oloo.mass_data_generator.hibernate.entity.*;
 
 import java.sql.Date;
-import java.util.concurrent.TimeUnit;
 
 public class DataGenerator {
     private static final Faker faker = new Faker();
 
-    public static Employee generateEmployee() {
+    public static Employee generateEmployee(String name,Date dob, Long departmentId, String type, Date date, String gender) {
         Employee employee = new Employee();
-        employee.setName(faker.name().fullName());
-        employee.setDob(faker.date().birthday());
-        employee.setGender(faker.demographic().sex());
-        employee.setDepartmentId(faker.number().numberBetween(1L, 10L));
-        employee.setEmploymentType(faker.options().option("FULL-TIME", "PART-TIME","CONTRACT","TEMPORARY"));
-        employee.setEmploymentDate(faker.date().past(365, TimeUnit.DAYS));
+        employee.setName(name);
+        employee.setDob(dob);
+        employee.setGender(gender);
+        employee.setDepartmentId(departmentId);
+        employee.setEmploymentType(type);
+        employee.setEmploymentDate(date);
         return employee;
     }
 
-    public static ContactInfo generateContactInfo(Long employeeId) {
+    public static ContactInfo generateContactInfo(Long employeeId, String address, String number, String email) {
         ContactInfo contactInfo = new ContactInfo();
         contactInfo.setEmployeeId(employeeId);
-        contactInfo.setAddress(faker.address().fullAddress());
-        contactInfo.setPhoneNumber(faker.phoneNumber().phoneNumber());
-        contactInfo.setEmail(faker.internet().emailAddress());
+        contactInfo.setAddress(address);
+        contactInfo.setPhoneNumber(number);
+        contactInfo.setEmail(email);
         return contactInfo;
     }
 
-    public static Salary generateSalary(Long employeeId, Date month) {
+    public static Salary generateSalary(Long employeeId, Date month, Double totalAllowances, Double totalDeductions, Double grossSalary, Double totalTaxes, Double basicSalary) {
         Salary salary = new Salary();
         salary.setEmployeeId(employeeId);
-        salary.setBasicSalary(faker.number().randomDouble(2, 30000, 150000));
+        salary.setBasicSalary(basicSalary);
         salary.setMonth(month);
+        salary.setTotalAllowances(totalAllowances);
+        salary.setTotalDeductions(totalDeductions);
+        salary.setTotalEarnings(grossSalary);
+        salary.setTotalTaxes(totalTaxes);
+        salary.setNetSalary(grossSalary - totalAllowances);
         return salary;
     }
 
-    public static Allowance generateAllowance(Long employeeId) {
+    public static Allowance generateAllowance(Long employeeId, Double rate, Double grossSalary, String allowanceName, Date month, String allowanceType, Double allowanceAmount) {
         Allowance allowance = new Allowance();
         allowance.setEmployeeId(employeeId);
-        allowance.setAmount(faker.number().randomDouble(2, 1000, 10000));
-        allowance.setType(faker.job().field());
+        allowance.setMonth(month);
+        allowance.setAllowanceName(allowanceName);
+        allowance.setAllowanceRate(rate);
+        allowance.setAllowanceAmount(allowanceAmount);
+        allowance.setAllowanceTypeType(allowanceType);
         return allowance;
     }
 
-    public static Deduction generateDeduction(Long employeeId) {
+    public static Deduction generateDeduction(Long employeeId, Date month, Double deductionAmount, String deductionName, String deductionType) {
         Deduction deduction = new Deduction();
         deduction.setEmployeeId(employeeId);
-        deduction.setAmount(faker.number().randomDouble(2, 500, 5000));
-        deduction.setType(faker.job().keySkills());
+        deduction.setMonth(month);
+        deduction.setDeductionName(deductionName);
+        deduction.setDeductionAmount(deductionAmount);
+        deduction.setDeductionType(deductionType);
         return deduction;
     }
 
-    public static Tax generateTax(Long employeeId) {
+    public static Tax generateTax(Long employeeId, Date month, Double grossSalary, String taxName, Double taxRate, String taxType, Double taxAmount) {
         Tax tax = new Tax();
         tax.setEmployeeId(employeeId);
-        tax.setAmount(faker.number().randomDouble(2, 1000, 10000));
-        tax.setType("Income Tax");
+        tax.setMonth(month);
+        tax.setGrossSalary(grossSalary);
+        tax.setTaxName(taxName);
+        tax.setTaxRate(taxRate);
+        tax.setTaxType(taxType);
+        tax.setTaxAmount(taxAmount);
         return tax;
     }
 
-    public static BankDetails generateBankDetails(Long employeeId) {
+    public static BankDetails generateBankDetails(Long employeeId, String bankName, String accountNo, String branchCode) {
         BankDetails bankDetails = new BankDetails();
         bankDetails.setEmployeeId(employeeId);
-        bankDetails.setBankName(faker.company().name());
-        bankDetails.setAccountNumber(faker.finance().iban());
-        bankDetails.setBranchCode(faker.finance().bic());
+        bankDetails.setBankName(bankName);
+        bankDetails.setAccountNumber(accountNo);
+        bankDetails.setBranchCode(branchCode);
         return bankDetails;
     }
 }

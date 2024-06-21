@@ -94,8 +94,7 @@ public class Employee {
         this.employmentDate = employmentDate;
     }
 
-    // toString method (optional for debugging)
-    @Override
+   /* @Override
     public String toString() {
         return "Employee{" +
                 "id=" + id +
@@ -106,5 +105,5 @@ public class Employee {
                 ", employmentType='" + employmentType + '\'' +
                 ", employmentDate=" + employmentDate +
                 '}';
-    }
+    } */
 }
